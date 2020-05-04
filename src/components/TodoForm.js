@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Form, Input } from 'reactstrap';
 
 class TodoForm extends React.Component {
   constructor() {
@@ -20,11 +21,19 @@ class TodoForm extends React.Component {
 
   render() {
     return(
-      <form onSubmit={this.submitForm}>
-        <input onChange={this.changeHandler} type="text" name="itemName" value={this.state.itemName}/>
-        <button>Add Task</button>
-        <button onClick={this.props.clearCompleted} value="button">Clear completed</button>
-      </form>
+      <Form
+        className="col-6"
+        onSubmit={this.submitForm}
+      >
+        <Input 
+          onChange={this.changeHandler} 
+          type="text" name="itemName" 
+          value={this.state.itemName}
+          className="m-2"
+        />
+        <Button color="primary" className="col-5 offset-sm-1">Add Task</Button>
+        <Button onClick={this.props.clearCompleted} color="danger" className="col-5 m-1" value="button">Clear Completed</Button>
+      </Form>
     );
   }
 }

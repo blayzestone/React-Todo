@@ -1,17 +1,25 @@
 import React from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import "./App.css";
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
   constructor() {
     super();
     this.state = {
-      todos: [],
+      todos: [
+        {
+          task: "foobar",
+          id: Date.now(),
+          completed: false,
+        }
+      ],
     }
   }
 
   componentDidMount() {
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
     this.setState({
       todos: JSON.parse(localStorage.getItem("todos")),
     });
@@ -52,7 +60,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <h2>Welcome to your Todo App!</h2>
         <TodoList toggleCompleted={this.toggleCompleted} todos={this.state.todos}/>
         <TodoForm addItem={this.addItem} clearCompleted={this.clearCompleted}/>
