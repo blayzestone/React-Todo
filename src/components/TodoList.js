@@ -4,9 +4,9 @@ import Todo from './Todo';
 const TodoList = ({ todos, toggleCompleted }) => {
   return(
     <div>
-      {todos.map(todo => (
+      {todos ?todos.map(todo => (
         <Todo key={todo.id} todo={todo} toggleCompleted={toggleCompleted}/>
-      ))}
+      )) : <p>Please add a todo...</p>}
     </div>
   );
 }

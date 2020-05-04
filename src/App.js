@@ -8,18 +8,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: [
-        {
-          task: "foobar",
-          id: Date.now(),
-          completed: false,
-        }
-      ],
+      todos: [],
     }
   }
 
   componentDidMount() {
-    localStorage.setItem("todos", JSON.stringify(this.state.todos));
     this.setState({
       todos: JSON.parse(localStorage.getItem("todos")),
     });
